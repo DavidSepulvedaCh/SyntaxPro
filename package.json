@@ -1,0 +1,16 @@
+{
+  "name": "syntaxpro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "npm run build"
+  },
+  "dependencies": {
+    "astro": "^5.15.9",
+    "sass": "^1.94.1"
+  }
+}

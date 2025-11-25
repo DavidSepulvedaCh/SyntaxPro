@@ -1,0 +1,269 @@
+---
+import "../styles/MilieuBanner.scss";
+---
+
+<section class="milieu-banner">
+  <div class="banner-container">
+    <div class="banner-content">
+      <div class="banner-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </div>
+      <div class="banner-text">
+        <h3>¿Qué es Milieu Teaching?</h3>
+        <p>
+          Descubre cómo este enfoque transforma la intervención morfosintáctica
+        </p>
+      </div>
+      <button class="banner-button" id="openMilieuModal">
+        Descubrir Más
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="milieuModal">
+  <div class="modal-container">
+    <button class="modal-close" id="closeMilieuModal" aria-label="Cerrar">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <h2>Milieu Teaching</h2>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-intro">
+          Milieu Teaching es un enfoque de intervención naturalista que
+          aprovecha los contextos cotidianos y los intereses del niño para
+          estimular el desarrollo del lenguaje. En <strong>SyntaxPro</strong> nos
+          especializamos en su aplicación específica para el desarrollo morfosintáctico,
+          transformando las interacciones diarias en oportunidades de aprendizaje
+          significativo.
+        </p>
+
+        <div class="images-section">
+          <div class="image-card">
+            <img
+              src="/milieu/1.png"
+              alt="Milieu Teaching - Contextos naturales"
+            />
+          </div>
+          <div class="image-card">
+            <img src="/milieu/2.png" alt="Milieu Teaching - Interacción" />
+          </div>
+          <div class="image-card">
+            <img src="/milieu/3.png" alt="Milieu Teaching - Desarrollo" />
+          </div>
+        </div>
+
+        <div class="why-section">
+          <h3>¿Por qué Milieu Teaching?</h3>
+          <p class="why-intro">
+            Porque transforma momentos cotidianos en oportunidades de
+            aprendizaje significativo. A diferencia de métodos tradicionales de
+            intervención, Milieu Teaching se integra naturalmente en la vida
+            diaria del niño, permitiendo:
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            <p>
+              Generalización inmediata de habilidades morfosintácticas en
+              contextos reales
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <p>
+              Mayor motivación y participación activa del niño en el proceso de
+              aprendizaje
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <p>
+              Resultados sostenibles basados en evidencia científica actualizada
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <p>
+              Integración familiar efectiva facilitando la continuidad del
+              tratamiento
+            </p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="cta-modal-button" id="contactButton">
+            Comenzar mi Capacitación
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const openModal = document.getElementById("openMilieuModal");
+  const closeModal = document.getElementById("closeMilieuModal");
+  const modal = document.getElementById("milieuModal");
+  const contactButton = document.getElementById("contactButton");
+
+  openModal?.addEventListener("click", () => {
+    modal?.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeModal?.addEventListener("click", () => {
+    modal?.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  contactButton?.addEventListener("click", () => {
+    modal?.classList.remove("active");
+    document.body.style.overflow = "auto";
+    document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Close with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal?.classList.contains("active")) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+</script>

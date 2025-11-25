@@ -1,0 +1,229 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/Login.scss";
+---
+
+<Layout title="Login - SyntaxPro">
+  <div class="login-page">
+    <div class="login-container">
+      <div class="login-content">
+        <div class="login-header">
+          <div class="logo-section">
+            <img src="/logo.png" alt="SyntaxPro Logo" class="login-logo" />
+          </div>
+          <h1>Bienvenido de vuelta</h1>
+          <p class="login-subtitle">Ingresa a tu cuenta para continuar</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <div class="input-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="input-icon"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="tu@email.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <div class="input-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="input-icon"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                required
+              />
+              <button type="button" class="toggle-password" id="togglePassword">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="eye-icon"
+                >
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="remember" name="remember" />
+              <span>Recordarme</span>
+            </label>
+            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" class="submit-button">
+            Iniciar Sesión
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+        <div class="login-footer">
+          <p>
+            ¿No tienes una cuenta? <a href="#" class="register-link"
+              >Regístrate aquí</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="login-illustration">
+        <div class="illustration-content">
+          <div class="floating-shape shape-1"></div>
+          <div class="floating-shape shape-2"></div>
+          <div class="floating-shape shape-3"></div>
+          <div class="illustration-text">
+            <h2>Transforma tu práctica clínica</h2>
+            <p>
+              Accede a recursos exclusivos, materiales especializados y
+              capacitación continua en Milieu Teaching
+            </p>
+            <ul class="benefits-list">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Capacitación basada en evidencia</span>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Materiales digitales exclusivos</span>
+              </li>
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Soporte especializado continuo</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Toggle password visibility
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("password") as HTMLInputElement;
+
+  togglePassword?.addEventListener("click", () => {
+    const type = passwordInput.type === "password" ? "text" : "password";
+    passwordInput.type = type;
+    togglePassword.classList.toggle("active");
+  });
+
+  // Form submission
+  const loginForm = document.getElementById("loginForm");
+  loginForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(loginForm as HTMLFormElement);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const remember = formData.get("remember");
+
+    // Aquí puedes agregar la lógica de autenticación
+    console.log("Login attempt:", { email, password, remember });
+
+    // Ejemplo de validación básica
+    if (email && password) {
+      alert(
+        "Funcionalidad de login en desarrollo. Credenciales recibidas correctamente."
+      );
+      // Aquí irías a tu backend o servicio de autenticación
+    }
+  });
+</script>

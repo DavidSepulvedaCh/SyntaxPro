@@ -1,0 +1,190 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  thumbnail: string;
+  pdfUrl: string;
+  zoomUrl: string;
+  progress: number;
+}
+
+const { title, description, thumbnail, pdfUrl, zoomUrl, progress } =
+  Astro.props;
+---
+
+<div class="course-card">
+  <div class="image-container">
+    <img src={thumbnail} alt={title} />
+    <div class="overlay">
+      <span class="progress-badge">{progress}% Complete</span>
+    </div>
+  </div>
+  <div class="content">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <div class="actions">
+      <a href={pdfUrl} target="_blank" class="btn btn-primary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline
+            points="7 10 12 15 17 10"></polyline><line
+            x1="12"
+            y1="15"
+            x2="12"
+            y2="3"></line></svg
+        >
+        Download PDF
+      </a>
+      <a href={zoomUrl} target="_blank" class="btn btn-secondary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polygon points="23 7 16 12 23 17 23 7"></polygon><rect
+            x="1"
+            y="5"
+            width="15"
+            height="14"
+            rx="2"
+            ry="2"></rect></svg
+        >
+        Join Zoom
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .course-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #cbd5e1;
+  }
+
+  .image-container {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .course-card:hover .image-container img {
+    transform: scale(1.05);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .progress-badge {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    color: var(--color-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-dark);
+  }
+
+  p {
+    margin: 0 0 1.5rem 0;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    flex: 1;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+  }
+
+  .btn-secondary {
+    background: #f1f5f9;
+    color: var(--color-text);
+    border: 1px solid #e2e8f0;
+  }
+
+  .btn-secondary:hover {
+    background: #e2e8f0;
+    color: var(--color-dark);
+  }
+</style>

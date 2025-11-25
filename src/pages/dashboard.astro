@@ -1,0 +1,164 @@
+---
+import Layout from "../layouts/DashboardLayout.astro";
+import CourseCard from "../components/CourseCard.astro";
+import courses from "../data/courses.json";
+---
+
+<Layout title="My Dashboard | SyntaxPro">
+  <main class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="user-welcome">
+        <h1>Welcome back, <span class="gradient-text">David</span></h1>
+        <p>Continue where you left off</p>
+      </div>
+      <div class="header-actions">
+        <button class="btn-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path
+              d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg
+          >
+        </button>
+        <div class="avatar">
+          <img
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
+            alt="User"
+          />
+        </div>
+      </div>
+    </header>
+
+    <section class="courses-grid">
+      {
+        courses.map((course) => (
+          <CourseCard
+            title={course.title}
+            description={course.description}
+            thumbnail={course.thumbnail}
+            pdfUrl={course.pdfUrl}
+            zoomUrl={course.zoomUrl}
+            progress={course.progress}
+          />
+        ))
+      }
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .dashboard-container {
+    min-height: 100vh;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem 0;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: var(--color-dark);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .user-welcome p {
+    margin: 0.5rem 0 0;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .btn-icon {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: var(--color-text-light);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-icon:hover {
+    background: #f8fafc;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .avatar:hover {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .header-actions {
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
