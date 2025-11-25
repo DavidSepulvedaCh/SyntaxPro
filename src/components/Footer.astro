@@ -1,13 +1,14 @@
 ---
 import "../styles/Footer.scss";
 import imagesConfig from "../data/images.json";
+import { routes } from "../utils/routes";
 ---
 
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-content">
       <div class="footer-column footer-brand">
-        <a href="/" class="footer-logo">
+        <a href={routes.home()} class="footer-logo">
           <img src={imagesConfig.logo} alt="SyntaxPro Logo" />
         </a>
         <p class="footer-description">
