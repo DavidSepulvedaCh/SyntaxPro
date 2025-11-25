@@ -3,6 +3,5 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://davidsepulvedach.github.io",
-  base: "/SyntaxPro",
+  site: "https://davidsepulvedach.github.io/SyntaxPro",
 });

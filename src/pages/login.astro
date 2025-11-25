@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/Login.scss";
+import imagesConfig from "../data/images.json";
 ---
 
 <Layout title="Login - SyntaxPro">
@@ -9,7 +10,11 @@ import "../styles/Login.scss";
       <div class="login-content">
         <div class="login-header">
           <div class="logo-section">
-            <img src="/logo.png" alt="SyntaxPro Logo" class="login-logo" />
+            <img
+              src={imagesConfig.logo}
+              alt="SyntaxPro Logo"
+              class="login-logo"
+            />
           </div>
           <h1>Bienvenido de vuelta</h1>
           <p class="login-subtitle">Ingresa a tu cuenta para continuar</p>
