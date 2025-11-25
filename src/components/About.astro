@@ -1,5 +1,6 @@
 ---
 import "../styles/About.scss";
+import imagesConfig from "../data/images.json";
 ---
 
 <section class="about" id="sobre-mi">
@@ -22,7 +23,7 @@ import "../styles/About.scss";
             <div class="image-decoration decoration-1"></div>
             <div class="image-decoration decoration-2"></div>
             <img
-              src="/medico.jpg"
+              src={imagesConfig.medico}
               alt="Maritza Niño - Fonoaudióloga"
               class="profile-image"
             />

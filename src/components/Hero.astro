@@ -1,6 +1,7 @@
 ---
 // Hero Section Component
 import "../styles/Hero.scss";
+import imagesConfig from "../data/images.json";
 ---
 
 <section class="hero" id="inicio">
@@ -99,7 +100,7 @@ import "../styles/Hero.scss";
             <span>Certificación Profesional</span>
           </div>
           <div class="hero-logo-display">
-            <img src="/logo.png" alt="SyntaxPro Logo" />
+            <img src={imagesConfig.logo} alt="SyntaxPro Logo" />
           </div>
         </div>
       </div>

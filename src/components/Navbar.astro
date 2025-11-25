@@ -1,13 +1,14 @@
 ---
 // Navbar Component
 import "../styles/Navbar.scss";
+import imagesConfig from "../data/images.json";
 ---
 
 <nav class="navbar">
   <div class="container">
     <div class="nav-content">
       <a href="/" class="logo">
-        <img src="/logo.png" alt="SyntaxPro Logo" class="logo-img" />
+        <img src={imagesConfig.logo} alt="SyntaxPro Logo" class="logo-img" />
       </a>
 
       <button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">

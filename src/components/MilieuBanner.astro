@@ -1,5 +1,6 @@
 ---
 import "../styles/MilieuBanner.scss";
+import imagesConfig from "../data/images.json";
 ---
 
 <section class="milieu-banner">
@@ -104,15 +105,21 @@ import "../styles/MilieuBanner.scss";
         <div class="images-section">
           <div class="image-card">
             <img
-              src="/milieu/1.png"
+              src={imagesConfig.milieu.image1}
               alt="Milieu Teaching - Contextos naturales"
             />
           </div>
           <div class="image-card">
-            <img src="/milieu/2.png" alt="Milieu Teaching - Interacción" />
+            <img
+              src={imagesConfig.milieu.image2}
+              alt="Milieu Teaching - Interacción"
+            />
           </div>
           <div class="image-card">
-            <img src="/milieu/3.png" alt="Milieu Teaching - Desarrollo" />
+            <img
+              src={imagesConfig.milieu.image3}
+              alt="Milieu Teaching - Desarrollo"
+            />
           </div>
         </div>
 
