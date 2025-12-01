@@ -1,4 +1,6 @@
 ---
+import PaymentButton from "../components/PaymentButton.astro";
+
 interface Props {
   title?: string;
   description?: string;
@@ -28,6 +30,7 @@ const {
   </head>
   <body>
     <slot />
+    <PaymentButton />
   </body>
 </html>
 

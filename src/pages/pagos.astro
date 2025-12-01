@@ -1,0 +1,344 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import imagesConfig from "../data/images.json";
+---
+
+<Layout title="Métodos de Pago - SyntaxPro">
+  <Navbar />
+
+  <main class="payment-methods-page">
+    <div class="payment-hero">
+      <div class="container">
+        <h1>Métodos de Pago</h1>
+        <p>Elige la opción de pago que más te convenga</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="payment-methods-grid">
+        <!-- MercadoPago -->
+        <div class="payment-method-card">
+          <div
+            class="payment-card-header mercadopago"
+            style={`background-image: url(${imagesConfig.payment.mercadopago});`}
+          >
+          </div>
+          <div class="payment-card-body">
+            <h2>MercadoPago</h2>
+            <p class="payment-description">
+              Paga de forma rápida y segura con MercadoPago. Acepta tarjetas de
+              crédito, débito y más opciones.
+            </p>
+            <ul class="payment-features">
+              <li>✓ Pago instantáneo</li>
+              <li>✓ Protección al comprador</li>
+              <li>✓ Múltiples métodos de pago</li>
+              <li>✓ Pagos en cuotas disponibles</li>
+            </ul>
+            <a href="#mercadopago-form" class="payment-btn mercadopago-btn">
+              Pagar con MercadoPago
+            </a>
+          </div>
+        </div>
+
+        <!-- PayU -->
+        <div class="payment-method-card">
+          <div
+            class="payment-card-header payu"
+            style={`background-image: url(${imagesConfig.payment.payu});`}
+          >
+          </div>
+          <div class="payment-card-body">
+            <h2>PayU</h2>
+            <p class="payment-description">
+              Plataforma de pagos latinoamericana con amplia cobertura y
+              múltiples opciones de pago.
+            </p>
+            <ul class="payment-features">
+              <li>✓ Tarjetas crédito y débito</li>
+              <li>✓ Transferencias bancarias</li>
+              <li>✓ Pagos en efectivo</li>
+              <li>✓ Seguridad garantizada</li>
+            </ul>
+            <a href="#payu-form" class="payment-btn payu-btn">
+              Pagar con PayU
+            </a>
+          </div>
+        </div>
+
+        <!-- Transferencia Bancaria -->
+        <div class="payment-method-card">
+          <div
+            class="payment-card-header transferencia"
+            style={`background-image: url(${imagesConfig.payment.transferencia});`}
+          >
+          </div>
+          <div class="payment-card-body">
+            <h2>Transferencia Bancaria</h2>
+            <p class="payment-description">
+              Realiza tu pago directamente desde tu cuenta bancaria. Proceso
+              tradicional y confiable.
+            </p>
+            <ul class="payment-features">
+              <li>✓ Sin comisiones adicionales</li>
+              <li>✓ Pago directo a cuenta</li>
+              <li>✓ Proceso seguro</li>
+              <li>✓ Confirmación por email</li>
+            </ul>
+            <a href="#transferencia-info" class="payment-btn transferencia-btn">
+              Ver Datos Bancarios
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info adicional -->
+      <div class="payment-info-section">
+        <div class="info-card">
+          <h3>🔒 Seguridad Garantizada</h3>
+          <p>
+            Todos nuestros métodos de pago utilizan encriptación SSL y cumplen
+            con los estándares PCI DSS para proteger tu información.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>💬 ¿Necesitas Ayuda?</h3>
+          <p>
+            Si tienes dudas sobre el proceso de pago, contáctanos a través de
+            nuestro formulario o envíanos un email.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .payment-methods-page {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .payment-methods-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #f8fafc 0%, #e0e7ff 100%);
+    z-index: -1;
+  }
+
+  .payment-hero {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
+    color: white;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .payment-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .payment-hero p {
+    font-size: 1.25rem;
+    opacity: 0.95;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .payment-method-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .payment-method-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  .payment-card-header {
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 200px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    &.mercadopago::before {
+      background: linear-gradient(
+        135deg,
+        rgba(0, 158, 227, 0.7) 0%,
+        rgba(0, 131, 199, 0.7) 100%
+      );
+    }
+
+    &.payu::before {
+      background: linear-gradient(
+        135deg,
+        rgba(164, 198, 57, 0.7) 0%,
+        rgba(143, 184, 47, 0.7) 100%
+      );
+    }
+
+    &.transferencia::before {
+      background: linear-gradient(
+        135deg,
+        rgba(37, 99, 235, 0.7) 0%,
+        rgba(30, 64, 175, 0.7) 100%
+      );
+    }
+  }
+
+  .payment-card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .payment-card-body h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .payment-description {
+    color: #64748b;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .payment-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+  }
+
+  .payment-features li {
+    padding: 0.5rem 0;
+    color: #475569;
+    font-size: 0.95rem;
+  }
+
+  .payment-btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+
+    &.mercadopago-btn {
+      background: linear-gradient(135deg, #009ee3 0%, #0083c7 100%);
+    }
+
+    &.payu-btn {
+      background: linear-gradient(135deg, #a4c639 0%, #8fb82f 100%);
+    }
+
+    &.transferencia-btn {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .payment-info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .info-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .info-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+  }
+
+  .info-card p {
+    color: #64748b;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .payment-hero {
+      padding: 6rem 1.5rem 3rem;
+    }
+
+    .payment-hero h1 {
+      font-size: 2rem;
+    }
+
+    .payment-hero p {
+      font-size: 1rem;
+    }
+
+    .payment-methods-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .payment-info-section {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

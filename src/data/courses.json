@@ -1,29 +1,69 @@
 [
     {
         "id": "1",
-        "title": "Mastering Astro Patterns",
-        "description": "Learn advanced patterns for building scalable web applications with Astro.",
-        "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop",
-        "pdfUrl": "#",
-        "zoomUrl": "https://zoom.us/j/123456789",
-        "progress": 75
+        "title": "MÓDULO 1. Fundamentos científicos",
+        "description": "Conoce las bases teóricas y evidencia científica del Milieu Teaching.",
+        "thumbnail": "https://images.unsplash.com/photo-1532619187608-e5375cab36aa?q=80&w=1000&auto=format&fit=crop",
+        "progress": 0,
+        "locked": false,
+        "lessons": [
+            {
+                "id": "1-1",
+                "type": "zoom",
+                "title": "Lección 1. Milieu Teaching",
+                "url": "https://zoom.us/es/join"
+            },
+            {
+                "id": "1-2",
+                "type": "zoom",
+                "title": "Lección 2. Evidencia científica comparativa",
+                "url": "https://zoom.us/es/join"
+            },
+            {
+                "id": "1-3",
+                "type": "pdf",
+                "title": "Material descargable. Efectividad entre los enfoques de intervención milieu teaching e instrucción directa",
+                "url": "https://res.cloudinary.com/dfqgbw0bt/raw/upload/v1764615734/SYNTAX_PRO_SEMINARIO_EN_MILIEU_TEACHING_PARA_LA_INTERVENCI%C3%93N_MORFOSINT%C3%81CTICA_CON_ESTRATEGIAS_COMPROBADAS_MARITZA_NI%C3%91O_VILLAMIZAR_2025-2_1_vhrngq.docx"
+            },
+            {
+                "id": "1-4",
+                "type": "activity",
+                "title": "Actividad 1. Autoevaluación de práctica final",
+                "url": "https://res.cloudinary.com/dfqgbw0bt/image/upload/v1764616778/AUTOEVALUACI%C3%93N_DE_PR%C3%81CTICA_FINAL_xxkbdt.jpg"
+            },
+            {
+                "id": "1-5",
+                "type": "forum",
+                "title": "Comunidad privada",
+                "url": "/foro"
+            }
+        ]
     },
     {
         "id": "2",
-        "title": "React for Modern Web",
-        "description": "A comprehensive guide to building modern user interfaces with React.",
-        "thumbnail": "https://images.unsplash.com/photo-1633356122102-3fe601e1570f?q=80&w=1000&auto=format&fit=crop",
-        "pdfUrl": "#",
-        "zoomUrl": "https://zoom.us/j/987654321",
-        "progress": 30
+        "title": "MÓDULO 2. Estrategias de intervención Milieu Teaching",
+        "description": "Aprende a implementar estrategias efectivas de Milieu Teaching.",
+        "thumbnail": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000&auto=format&fit=crop",
+        "progress": 0,
+        "locked": true,
+        "lessons": []
     },
     {
         "id": "3",
-        "title": "UI/UX Design Fundamentals",
-        "description": "Understand the core principles of creating beautiful and functional interfaces.",
-        "thumbnail": "https://images.unsplash.com/photo-1586717791821-3f44a5638d48?q=80&w=1000&auto=format&fit=crop",
-        "pdfUrl": "#",
-        "zoomUrl": "https://zoom.us/j/112233445",
-        "progress": 100
+        "title": "MÓDULO 3. Morfosintaxis",
+        "description": "Profundiza en el desarrollo morfosintáctico y su intervención.",
+        "thumbnail": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1000&auto=format&fit=crop",
+        "progress": 0,
+        "locked": true,
+        "lessons": []
+    },
+    {
+        "id": "4",
+        "title": "MÓDULO 4. Proyecto integrador",
+        "description": "Aplica todos los conocimientos adquiridos en un proyecto final.",
+        "thumbnail": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop",
+        "progress": 0,
+        "locked": true,
+        "lessons": []
     }
 ]

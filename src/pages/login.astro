@@ -200,36 +200,64 @@ import imagesConfig from "../data/images.json";
   </div>
 </Layout>
 
-<script>
+<script
+  define:vars={{
+    users: await import("../data/users.json").then((m) => m.default),
+  }}
+>
   // Toggle password visibility
   const togglePassword = document.getElementById("togglePassword");
-  const passwordInput = document.getElementById("password") as HTMLInputElement;
+  const passwordInput = document.getElementById("password");
 
-  togglePassword?.addEventListener("click", () => {
-    const type = passwordInput.type === "password" ? "text" : "password";
-    passwordInput.type = type;
-    togglePassword.classList.toggle("active");
-  });
+  if (togglePassword && passwordInput) {
+    togglePassword.addEventListener("click", () => {
+      const type = passwordInput.type === "password" ? "text" : "password";
+      passwordInput.type = type;
+      togglePassword.classList.toggle("active");
+    });
+  }
 
   // Form submission
   const loginForm = document.getElementById("loginForm");
-  loginForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(loginForm as HTMLFormElement);
-    const email = formData.get("email");
-    const password = formData.get("password");
-    const remember = formData.get("remember");
+      const formData = new FormData(loginForm);
+      const email = formData.get("email");
+      const password = formData.get("password");
 
-    // Aquí puedes agregar la lógica de autenticación
-    console.log("Login attempt:", { email, password, remember });
-
-    // Ejemplo de validación básica
-    if (email && password) {
-      alert(
-        "Funcionalidad de login en desarrollo. Credenciales recibidas correctamente."
+      // Buscar usuario en la base de datos
+      const user = users.find(
+        (u) => u.email === email && u.password === password
       );
-      // Aquí irías a tu backend o servicio de autenticación
-    }
-  });
+
+      if (user) {
+        // Guardar sesión del usuario
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            avatar: user.avatar,
+          })
+        );
+        sessionStorage.setItem("isAuthenticated", "true");
+
+        // Redirigir al dashboard
+        window.location.href = "/dashboard";
+      } else {
+        // Credenciales incorrectas
+        alert("Email o contraseña incorrectos. Por favor, intenta de nuevo.");
+      }
+    });
+  }
+
+  // Verificar si el usuario ya está autenticado
+  const isAuthenticated = sessionStorage.getItem("isAuthenticated");
+  if (isAuthenticated === "true") {
+    window.location.href = "/dashboard";
+  }
 </script>

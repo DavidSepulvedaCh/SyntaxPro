@@ -1,0 +1,205 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Seminars from "../components/Seminars.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Servicios - Seminarios de Fonoaudiología | SyntaxPro"
+  description="Descubre nuestros seminarios especializados en fonoaudiología, Milieu Teaching y estrategias de intervención del lenguaje para profesionales."
+>
+  <Navbar />
+
+  <main>
+    <!-- Hero Section -->
+    <section class="services-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Seminarios Especializados</h1>
+          <p class="hero-description">
+            Capacitaciones diseñadas para profesionales de la fonoaudiología que
+            buscan actualizar sus conocimientos y mejorar sus prácticas
+            terapéuticas
+          </p>
+          <div class="hero-features">
+            <div class="feature">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Certificación profesional</span>
+            </div>
+            <div class="feature">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Grupos reducidos</span>
+            </div>
+            <div class="feature">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>Modalidad flexible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Seminars />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .services-hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #5ebbaa 100%);
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(94, 187, 170, 0.2) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(59, 130, 246, 0.2) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+    color: #e0f2fe;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .feature:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+  }
+
+  .feature svg {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .services-hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .feature {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+</style>

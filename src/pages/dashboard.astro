@@ -1,18 +1,23 @@
 ---
 import Layout from "../layouts/DashboardLayout.astro";
 import CourseCard from "../components/CourseCard.astro";
+import WelcomeModal from "../components/WelcomeModal.astro";
 import courses from "../data/courses.json";
 ---
 
 <Layout title="My Dashboard | SyntaxPro">
+  <WelcomeModal />
+
   <main class="dashboard-container">
     <header class="dashboard-header">
       <div class="user-welcome">
-        <h1>Welcome back, <span class="gradient-text">David</span></h1>
-        <p>Continue where you left off</p>
+        <h1>
+          Bienvenido, <span class="gradient-text" id="userName">Usuario</span>
+        </h1>
+        <p>Continúa donde lo dejaste</p>
       </div>
       <div class="header-actions">
-        <button class="btn-icon">
+        <button class="btn-icon" id="infoBtn" title="Ver mensaje de bienvenida">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -23,11 +28,30 @@ import courses from "../data/courses.json";
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            ><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path
-              d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg
           >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
         </button>
-        <div class="avatar">
+        <button class="btn-icon" id="logoutBtn" title="Cerrar sesión">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+        </button>
+        <div class="avatar" id="userAvatar">
           <img
             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=100&auto=format&fit=crop"
             alt="User"
@@ -36,19 +60,50 @@ import courses from "../data/courses.json";
       </div>
     </header>
 
-    <section class="courses-grid">
-      {
-        courses.map((course) => (
-          <CourseCard
-            title={course.title}
-            description={course.description}
-            thumbnail={course.thumbnail}
-            pdfUrl={course.pdfUrl}
-            zoomUrl={course.zoomUrl}
-            progress={course.progress}
-          />
-        ))
-      }
+    <section class="modules-section">
+      <div class="section-header">
+        <h2>Módulos Disponibles</h2>
+        <p>Accede al contenido desbloqueado</p>
+      </div>
+      <div class="courses-grid">
+        {
+          courses
+            .filter((course) => !course.locked)
+            .map((course) => (
+              <CourseCard
+                title={course.title}
+                description={course.description}
+                thumbnail={course.thumbnail}
+                progress={course.progress}
+                locked={course.locked}
+                lessons={course.lessons}
+              />
+            ))
+        }
+      </div>
+    </section>
+
+    <section class="modules-section">
+      <div class="section-header">
+        <h2>Próximos Módulos</h2>
+        <p>Se desbloquearán próximamente</p>
+      </div>
+      <div class="courses-grid">
+        {
+          courses
+            .filter((course) => course.locked)
+            .map((course) => (
+              <CourseCard
+                title={course.title}
+                description={course.description}
+                thumbnail={course.thumbnail}
+                progress={course.progress}
+                locked={course.locked}
+                lessons={course.lessons}
+              />
+            ))
+        }
+      </div>
     </section>
   </main>
 </Layout>
@@ -139,6 +194,27 @@ import courses from "../data/courses.json";
     object-fit: cover;
   }
 
+  .modules-section {
+    margin-bottom: 4rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
   .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -162,3 +238,50 @@ import courses from "../data/courses.json";
     }
   }
 </style>
+
+<script>
+  // Verificar autenticación y cargar datos del usuario
+  if (typeof window !== "undefined") {
+    const isAuthenticated = sessionStorage.getItem("isAuthenticated");
+    const userStr = localStorage.getItem("user");
+
+    if (!isAuthenticated || !userStr) {
+      // No está autenticado, redirigir al login
+      window.location.href = "/login";
+    } else {
+      // Cargar datos del usuario
+      const user = JSON.parse(userStr);
+      const userNameElement = document.getElementById("userName");
+      const userAvatarElement = document.getElementById("userAvatar");
+
+      if (userNameElement) {
+        userNameElement.textContent = user.name;
+      }
+
+      if (userAvatarElement) {
+        const img = userAvatarElement.querySelector("img");
+        if (img) {
+          img.src = user.avatar;
+          img.alt = user.name;
+        }
+      }
+    }
+
+    // Manejar botón de información para mostrar el modal de bienvenida
+    const infoBtn = document.getElementById("infoBtn");
+    infoBtn?.addEventListener("click", () => {
+      const welcomeModal = document.getElementById("welcomeModal");
+      welcomeModal?.classList.remove("hidden");
+    });
+
+    // Manejar logout
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn?.addEventListener("click", () => {
+      if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
+        localStorage.removeItem("user");
+        sessionStorage.removeItem("isAuthenticated");
+        window.location.href = "/login";
+      }
+    });
+  }
+</script>
