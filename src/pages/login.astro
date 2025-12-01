@@ -205,6 +205,11 @@ import imagesConfig from "../data/images.json";
     users: await import("../data/users.json").then((m) => m.default),
   }}
 >
+  // Get base URL
+  const getBaseUrl = () => {
+    return import.meta.env.BASE_URL || "/";
+  };
+
   // Toggle password visibility
   const togglePassword = document.getElementById("togglePassword");
   const passwordInput = document.getElementById("password");
@@ -247,7 +252,7 @@ import imagesConfig from "../data/images.json";
         sessionStorage.setItem("isAuthenticated", "true");
 
         // Redirigir al dashboard
-        window.location.href = "/dashboard";
+        window.location.href = `${getBaseUrl()}dashboard`;
       } else {
         // Credenciales incorrectas
         alert("Email o contraseña incorrectos. Por favor, intenta de nuevo.");
@@ -258,6 +263,6 @@ import imagesConfig from "../data/images.json";
   // Verificar si el usuario ya está autenticado
   const isAuthenticated = sessionStorage.getItem("isAuthenticated");
   if (isAuthenticated === "true") {
-    window.location.href = "/dashboard";
+    window.location.href = `${getBaseUrl()}dashboard`;
   }
 </script>

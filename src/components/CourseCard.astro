@@ -1,4 +1,6 @@
 ---
+import { route } from "../utils/routes";
+
 interface Lesson {
   id: string;
   type: string;
@@ -23,6 +25,15 @@ const {
   locked = false,
   lessons = [],
 } = Astro.props;
+
+// Helper to process lesson URLs with base path
+const processLessonUrl = (lesson: Lesson) => {
+  // If it's an internal route (starts with /), add base path
+  if (lesson.url.startsWith("/") && !lesson.url.startsWith("http")) {
+    return route(lesson.url.slice(1)); // Remove leading slash
+  }
+  return lesson.url;
+};
 ---
 
 <div class="course-card" class:list={[{ locked }]}>
@@ -66,7 +77,7 @@ const {
         <div class="lessons-list">
           {lessons.map((lesson) => (
             <a
-              href={lesson.url}
+              href={processLessonUrl(lesson)}
               target={lesson.type === "forum" ? "_self" : "_blank"}
               class="lesson-item"
               data-type={lesson.type}

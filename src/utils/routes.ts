@@ -31,4 +31,7 @@ export const routes = {
     home: () => getBaseUrl(),
     login: () => route('login'),
     dashboard: () => route('dashboard'),
+    foro: () => route('foro'),
+    servicios: () => route('servicios'),
+    pagos: () => route('pagos'),
 } as const;

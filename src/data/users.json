@@ -9,7 +9,7 @@
     },
     {
         "id": 2,
-        "name": "Maritza Niño",
+        "name": "Maritza Niño Villamizar",
         "email": "maritza@syntaxpro.com",
         "password": "maritza123",
         "role": "instructor",
@@ -17,9 +17,9 @@
     },
     {
         "id": 3,
-        "name": "Calificador 1",
-        "email": "calificador1@syntaxpro.com",
-        "password": "calificador123",
+        "name": "Jurado Calificador",
+        "email": "jurado@syntaxpro.com",
+        "password": "jurado123",
         "role": "admin",
         "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop"
     }

@@ -245,9 +245,14 @@ import courses from "../data/courses.json";
     const isAuthenticated = sessionStorage.getItem("isAuthenticated");
     const userStr = localStorage.getItem("user");
 
+    // Get base URL from meta tag
+    const getBaseUrl = () => {
+      return import.meta.env.BASE_URL || "/";
+    };
+
     if (!isAuthenticated || !userStr) {
       // No está autenticado, redirigir al login
-      window.location.href = "/login";
+      window.location.href = `${getBaseUrl()}login`;
     } else {
       // Cargar datos del usuario
       const user = JSON.parse(userStr);
@@ -280,7 +285,7 @@ import courses from "../data/courses.json";
       if (confirm("¿Estás seguro de que quieres cerrar sesión?")) {
         localStorage.removeItem("user");
         sessionStorage.removeItem("isAuthenticated");
-        window.location.href = "/login";
+        window.location.href = `${getBaseUrl()}login`;
       }
     });
   }

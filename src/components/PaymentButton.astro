@@ -1,9 +1,10 @@
 ---
 // Payment Button Component
 import "../styles/PaymentButton.scss";
+import { routes } from "../utils/routes";
 ---
 
-<a href="/pagos" class="side-payment-btn">
+<a href={routes.pagos()} class="side-payment-btn">
   <div class="side-btn-icon">
     <svg
       xmlns="http://www.w3.org/2000/svg"

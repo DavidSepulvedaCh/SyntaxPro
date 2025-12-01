@@ -608,11 +608,16 @@ import Layout from "../layouts/DashboardLayout.astro";
 </style>
 
 <script>
+  // Get base URL
+  const getBaseUrl = () => {
+    return import.meta.env.BASE_URL || "/";
+  };
+
   // Verificar autenticación
   if (typeof window !== "undefined") {
     const isAuthenticated = sessionStorage.getItem("isAuthenticated");
     if (!isAuthenticated) {
-      window.location.href = "/login";
+      window.location.href = `${getBaseUrl()}login`;
     }
   }
 
