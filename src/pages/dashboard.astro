@@ -245,9 +245,12 @@ import courses from "../data/courses.json";
     const isAuthenticated = sessionStorage.getItem("isAuthenticated");
     const userStr = localStorage.getItem("user");
 
-    // Get base URL from meta tag
+    // Get base URL from document location
     const getBaseUrl = () => {
-      return import.meta.env.BASE_URL || "/";
+      const path = window.location.pathname;
+      // Extract base from path (e.g., /SyntaxPro/ from /SyntaxPro/dashboard)
+      const match = path.match(/^(\/[^\/]+\/)/);
+      return match ? match[1] : '/';
     };
 
     if (!isAuthenticated || !userStr) {

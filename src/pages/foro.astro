@@ -608,9 +608,12 @@ import Layout from "../layouts/DashboardLayout.astro";
 </style>
 
 <script>
-  // Get base URL
+  // Get base URL from document location
   const getBaseUrl = () => {
-    return import.meta.env.BASE_URL || "/";
+    const path = window.location.pathname;
+    // Extract base from path (e.g., /SyntaxPro/ from /SyntaxPro/foro)
+    const match = path.match(/^(\/[^\/]+\/)/);
+    return match ? match[1] : '/';
   };
 
   // Verificar autenticación

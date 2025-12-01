@@ -205,9 +205,12 @@ import imagesConfig from "../data/images.json";
     users: await import("../data/users.json").then((m) => m.default),
   }}
 >
-  // Get base URL
+  // Get base URL from document location
   const getBaseUrl = () => {
-    return import.meta.env.BASE_URL || "/";
+    const path = window.location.pathname;
+    // Extract base from path (e.g., /SyntaxPro/ from /SyntaxPro/login)
+    const match = path.match(/^(\/[^\/]+\/)/);
+    return match ? match[1] : '/';
   };
 
   // Toggle password visibility
