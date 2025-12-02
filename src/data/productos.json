@@ -4,7 +4,7 @@
         "nombre": "Aventuras Gramaticales con Milo",
         "descripcion": "Material digital descargable con todas las estrategias.",
         "precio": 49.99,
-        "imagen": "kits/1.png",
+        "imagen": "/SyntaxPro/kits/1.png",
         "categoria": "material-digital",
         "mes": 1
     },
@@ -13,7 +13,7 @@
         "nombre": "Misión en la granja",
         "descripcion": "Más de 100 actividades listas para usar en tus sesiones terapéuticas con niños.",
         "precio": 39.99,
-        "imagen": "kits/2.png",
+        "imagen": "/SyntaxPro/kits/2.png",
         "categoria": "material-digital",
         "mes": 1
     },
@@ -22,7 +22,7 @@
         "nombre": "Los superpoderes de la oración.",
         "descripcion": "Herramienta de evaluación completa con plantillas editables y guías de interpretación.",
         "precio": 34.99,
-        "imagen": "kits/3.png",
+        "imagen": "/SyntaxPro/kits/3.png",
         "categoria": "material-digital",
         "mes": 2
     },
@@ -31,7 +31,7 @@
         "nombre": "La fábrica de palabras",
         "descripcion": "Tarjetas y recursos visuales imprimibles para facilitar el aprendizaje morfosintáctico.",
         "precio": 29.99,
-        "imagen": "kits/4.png",
+        "imagen": "/SyntaxPro/kits/4.png",
         "categoria": "material-digital",
         "mes": 2
     },
@@ -40,7 +40,7 @@
         "nombre": "Exploradores del tiempo gramatical",
         "descripcion": "Plantillas profesionales para organizar y documentar tus sesiones terapéuticas.",
         "precio": 24.99,
-        "imagen": "kits/5.png",
+        "imagen": "/SyntaxPro/kits/5.png",
         "categoria": "material-digital",
         "mes": 3
     },
@@ -49,7 +49,7 @@
         "nombre": "El jardín de las palabras",
         "descripcion": "Colección de juegos interactivos diseñados específicamente para trabajar morfosintaxis.",
         "precio": 44.99,
-        "imagen": "kits/6.png",
+        "imagen": "/SyntaxPro/kits/6.png",
         "categoria": "material-digital",
         "mes": 3
     },
@@ -58,7 +58,7 @@
         "nombre": "La receta secreta",
         "descripcion": "Colección de juegos interactivos diseñados específicamente para trabajar morfosintaxis.",
         "precio": 44.99,
-        "imagen": "kits/7.png",
+        "imagen": "/SyntaxPro/kits/7.png",
         "categoria": "material-digital",
         "mes": 4
     },
@@ -67,7 +67,7 @@
         "nombre": "La sala de máquinas",
         "descripcion": "Colección de juegos interactivos diseñados específicamente para trabajar morfosintaxis.",
         "precio": 44.99,
-        "imagen": "kits/8.png",
+        "imagen": "/SyntaxPro/kits/8.png",
         "categoria": "material-digital",
         "mes": 4
     }
