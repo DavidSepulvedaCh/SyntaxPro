@@ -32,11 +32,21 @@
 
 .logo-section {
   margin-bottom: 1.5rem;
+
+  a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .login-logo {
   height: 60px;
   width: auto;
+  cursor: pointer;
 }
 
 .login-header h1 {

@@ -613,7 +613,7 @@ import Layout from "../layouts/DashboardLayout.astro";
     const path = window.location.pathname;
     // Extract base from path (e.g., /SyntaxPro/ from /SyntaxPro/foro)
     const match = path.match(/^(\/[^\/]+\/)/);
-    return match ? match[1] : '/';
+    return match ? match[1] : "/";
   };
 
   // Verificar autenticación

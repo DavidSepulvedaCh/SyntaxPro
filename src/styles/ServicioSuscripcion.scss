@@ -1,0 +1,547 @@
+.pdf-viewer-page {
+  min-height: 100vh;
+  padding: 100px 0 0;
+
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fae8ff 0%, #fff0f9 100%);
+    z-index: -1;
+  }
+}
+
+.pdf-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.pdf-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1e293b;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    text-shadow: none;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin: 0;
+  }
+}
+
+.pdf-viewer {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  margin-bottom: 4rem;
+}
+
+.pdf-iframe {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  border: none;
+  display: block;
+}
+
+/* Productos Section */
+.productos-section {
+  margin-bottom: 4rem;
+}
+
+.productos-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0;
+  }
+}
+
+/* Tabs de Meses */
+.mes-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.mes-tab {
+  padding: 0.875rem 2rem;
+  background: white;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #c4b5fd;
+    color: #1e293b;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+    color: #1e293b;
+    border-color: #c4b5fd;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+  }
+}
+
+/* Contenido de Mes */
+.mes-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+
+  &.active {
+    display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mes-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #64748b;
+    margin: 0;
+  }
+}
+
+/* Carousel */
+.carousel-container {
+  position: relative;
+  padding: 0 60px 2rem;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  padding: 0.5rem 0 1.5rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease-in-out;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.producto-card {
+  width: 380px;
+  max-width: 380px;
+  height: 380px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.producto-image {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.producto-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #fce7f3 0%, #e0e7ff 100%);
+  color: #1e293b;
+  padding: 0.375rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.producto-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.producto-descripcion {
+  display: none;
+}
+
+.producto-footer {
+  display: none;
+}
+
+.producto-precio {
+  display: none;
+}
+
+.btn-comprar {
+  display: none;
+}
+
+/* Planes de Suscripción */
+.suscripcion-planes {
+  margin-top: 5rem;
+  text-align: center;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .planes-subtitle {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin: 0 0 3rem 0;
+  }
+}
+
+.planes-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.plan-card {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  &.plan-destacado {
+    border: 3px solid #8b5cf6;
+
+    .plan-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .btn-suscribirse {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+      &:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      }
+    }
+  }
+}
+
+.plan-badge {
+  position: absolute;
+  top: 30px;
+  right: -45px;
+  background: #8b5cf6;
+  color: white;
+  padding: 0.4rem 2.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+  z-index: 10;
+}
+
+.plan-header {
+  background: linear-gradient(135deg, #5ebd8f 0%, #4a9d7a 100%);
+  color: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+
+  h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.3;
+  }
+}
+
+.plan-precio {
+  background: white;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  display: inline-block;
+
+  .precio-valor {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+  }
+}
+
+.plan-contenido {
+  padding: 2.5rem 2rem;
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    text-align: left;
+  }
+}
+
+.plan-beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+      color: #10b981;
+    }
+  }
+}
+
+.btn-suscribirse {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #5ebd8f 0%, #4a9d7a 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(94, 189, 143, 0.4);
+    background: linear-gradient(135deg, #4a9d7a 0%, #5ebd8f 100%);
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background: #f8fafc;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &.prev {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  svg {
+    color: #1e293b;
+  }
+}
+
+@media (max-width: 1024px) {
+  .producto-card {
+    width: 340px;
+    max-width: 340px;
+    height: 360px;
+  }
+
+  .carousel-container {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pdf-viewer-page {
+    padding: 80px 0 0;
+  }
+
+  .pdf-container {
+    padding: 1rem;
+  }
+
+  .pdf-header {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .pdf-iframe {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .productos-header {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  .producto-card {
+    width: 100%;
+    max-width: 100%;
+    height: 380px;
+  }
+
+  .carousel-container {
+    padding: 0 40px;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .suscripcion-planes {
+    h2 {
+      font-size: 2rem;
+    }
+
+    .planes-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .planes-container {
+    gap: 1.5rem;
+  }
+
+  .plan-card {
+    max-width: 100%;
+  }
+
+  .plan-header {
+    padding: 2rem 1.5rem;
+
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .plan-precio {
+    .precio-valor {
+      font-size: 1.75rem;
+    }
+  }
+
+  .plan-contenido {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,7 +1,7 @@
 ---
-// Hero Section Component
 import "../styles/Hero.scss";
 import imagesConfig from "../data/images.json";
+import { routes } from "../utils/routes";
 ---
 
 <section class="hero" id="inicio">
@@ -21,11 +21,11 @@ import imagesConfig from "../data/images.json";
           Estrategias Validadas
         </h1>
         <p class="hero-subtitle">
-          Capacitación especializada en <strong>Milieu Teaching</strong> con estrategias
-          basadas en evidencia para profesionales del lenguaje y la comunicación.
+          Domina el Milieu Teaching en morfosintaxis con nuestro seminario y
+          potencia la comunicación diaria de tus pacientes.
         </p>
         <div class="hero-buttons">
-          <a href="#contacto" class="btn btn-primary">
+          <a href={routes.login()} class="btn btn-primary">
             Comenzar Ahora
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -34,4 +34,6 @@ export const routes = {
     foro: () => route('foro'),
     servicios: () => route('servicios'),
     pagos: () => route('pagos'),
+    servicioSeminario: () => route('servicio-seminario'),
+    servicioSuscripcion: () => route('servicio-suscripcion'),
 } as const;

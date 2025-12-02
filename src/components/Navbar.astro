@@ -19,9 +19,9 @@ import { routes } from "../utils/routes";
       </button>
 
       <ul class="nav-links" id="nav-links">
-        <li><a href="#inicio" class="nav-link">Inicio</a></li>
+        <li><a href={routes.home()} class="nav-link">Inicio</a></li>
         <li class="dropdown">
-          <a href="#servicios" class="nav-link dropdown-toggle">
+          <a class="nav-link dropdown-toggle">
             Servicios
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -40,20 +40,18 @@ import { routes } from "../utils/routes";
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href={routes.servicios()} class="dropdown-item"
+              <a href={routes.servicioSeminario()} class="dropdown-item"
                 >Seminario en Milieu Teaching</a
               >
             </li>
             <li>
-              <a href="#suscripcion" class="dropdown-item"
+              <a href={routes.servicioSuscripcion()} class="dropdown-item"
                 >Suscripción de materiales digitales</a
               >
             </li>
           </ul>
         </li>
         <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
-        <li><a href="#metodologia" class="nav-link">Metodología</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
         <li>
           <a href={routes.login()} class="nav-link login-button">
             <svg
@@ -89,7 +87,7 @@ import { routes } from "../utils/routes";
   });
 
   // Close mobile menu when clicking on a link
-  const links = document.querySelectorAll(".nav-link");
+  const links = document.querySelectorAll(".nav-link, .dropdown-item");
   links.forEach((link) => {
     link.addEventListener("click", () => {
       mobileToggle?.classList.remove("active");

@@ -250,7 +250,7 @@ import courses from "../data/courses.json";
       const path = window.location.pathname;
       // Extract base from path (e.g., /SyntaxPro/ from /SyntaxPro/dashboard)
       const match = path.match(/^(\/[^\/]+\/)/);
-      return match ? match[1] : '/';
+      return match ? match[1] : "/";
     };
 
     if (!isAuthenticated || !userStr) {
