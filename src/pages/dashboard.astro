@@ -165,7 +165,7 @@ import productos from "../data/productos.json";
                   <img src={producto.imagen} alt={producto.nombre} />
                   <div class="kit-overlay">
                     <button
-                      class="btn-download"
+                      class="btn-view-image"
                       onclick={`window.open('${producto.imagen}', '_blank')`}
                     >
                       <svg
@@ -179,17 +179,80 @@ import productos from "../data/productos.json";
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                        <polyline points="7 10 12 15 17 10" />
-                        <line x1="12" y1="15" x2="12" y2="3" />
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="2"
+                          ry="2"
+                        />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
                       </svg>
-                      Ver Kit
+                      Ver Imagen
                     </button>
                   </div>
                 </div>
                 <div class="kit-info">
                   <h3>{producto.nombre}</h3>
                   <p>{producto.descripcion}</p>
+                  {producto.actividades && producto.actividades.length > 0 ? (
+                    <div class="kit-activities">
+                      <h4>Actividades disponibles:</h4>
+                      <ul class="activities-list">
+                        {producto.actividades.map((actividad) => (
+                          <li>
+                            <button
+                              class="activity-btn"
+                              data-pdf={actividad.archivo}
+                              data-nombre={actividad.nombre}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                              </svg>
+                              {actividad.nombre}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : (
+                    <div class="kit-activities">
+                      <div class="no-activities">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="12" y1="8" x2="12" y2="12" />
+                          <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg>
+                        <p>Actividades disponibles próximamente</p>
+                      </div>
+                    </div>
+                  )}
                   <span class="kit-month">Mes {producto.mes}</span>
                 </div>
               </div>
@@ -197,6 +260,34 @@ import productos from "../data/productos.json";
           }
         </div>
       </section>
+    </div>
+
+    <!-- PDF Preview Modal -->
+    <div id="pdfModal" class="pdf-modal hidden">
+      <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+          <h3 id="pdfModalTitle">Actividad</h3>
+          <button class="pdf-modal-close" id="closePdfModal">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="pdf-modal-body">
+          <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+        </div>
+      </div>
     </div>
   </main>
 </Layout>
@@ -450,7 +541,7 @@ import productos from "../data/productos.json";
     opacity: 1;
   }
 
-  .btn-download {
+  .btn-view-image {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -466,7 +557,7 @@ import productos from "../data/productos.json";
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
-  .btn-download:hover {
+  .btn-view-image:hover {
     background: var(--color-primary);
     color: white;
     transform: scale(1.05);
@@ -494,6 +585,80 @@ import productos from "../data/productos.json";
     flex-grow: 1;
   }
 
+  .kit-activities {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .kit-activities h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .activity-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 0.625rem 0.875rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+  }
+
+  .activity-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    transform: translateX(4px);
+  }
+
+  .activity-btn svg {
+    flex-shrink: 0;
+  }
+
+  .no-activities {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .no-activities svg {
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+  }
+
+  .no-activities p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+  }
+
   .kit-month {
     display: inline-block;
     background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
@@ -504,6 +669,98 @@ import productos from "../data/productos.json";
     font-weight: 600;
     margin-top: 0.75rem;
     align-self: flex-start;
+  }
+
+  /* PDF Modal */
+  .pdf-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .pdf-modal.hidden {
+    display: none;
+    opacity: 0;
+  }
+
+  .pdf-modal-content {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      transform: translateY(-20px) scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+
+  .pdf-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .pdf-modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin: 0;
+  }
+
+  .pdf-modal-close {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pdf-modal-close:hover {
+    background: #f1f5f9;
+    color: var(--color-primary);
+  }
+
+  .pdf-modal-body {
+    flex: 1;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .pdf-modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
   }
 
   @media (max-width: 768px) {
@@ -551,6 +808,27 @@ import productos from "../data/productos.json";
 
     .section-header h2 {
       font-size: 1.5rem;
+    }
+
+    .pdf-modal {
+      padding: 1rem;
+    }
+
+    .pdf-modal-content {
+      height: 90vh;
+      max-height: 90vh;
+    }
+
+    .pdf-modal-header {
+      padding: 1rem 1.25rem;
+    }
+
+    .pdf-modal-header h3 {
+      font-size: 1rem;
+    }
+
+    .pdf-modal-body {
+      padding: 0.5rem;
     }
   }
 
@@ -637,6 +915,63 @@ import productos from "../data/productos.json";
           activeContent.classList.add("active");
         }
       });
+    });
+
+    // Manejar modal de PDF
+    const pdfModal = document.getElementById("pdfModal");
+    const pdfViewer = document.getElementById(
+      "pdfViewer"
+    ) as HTMLIFrameElement | null;
+    const pdfModalTitle = document.getElementById("pdfModalTitle");
+    const closePdfModal = document.getElementById("closePdfModal");
+
+    // Abrir modal al hacer clic en una actividad
+    const activityButtons = document.querySelectorAll(".activity-btn");
+    activityButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const pdfUrl = button.getAttribute("data-pdf");
+        const pdfName = button.getAttribute("data-nombre");
+
+        if (pdfUrl && pdfName && pdfModal && pdfViewer && pdfModalTitle) {
+          pdfModalTitle.textContent = pdfName;
+          pdfViewer.src = pdfUrl;
+          pdfModal.classList.remove("hidden");
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
+
+    // Cerrar modal
+    closePdfModal?.addEventListener("click", () => {
+      if (pdfModal && pdfViewer) {
+        pdfModal.classList.add("hidden");
+        pdfViewer.src = "";
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    pdfModal?.addEventListener("click", (e) => {
+      if (e.target === pdfModal && pdfViewer) {
+        pdfModal.classList.add("hidden");
+        pdfViewer.src = "";
+        document.body.style.overflow = "auto";
+      }
+    });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        pdfModal &&
+        pdfViewer &&
+        !pdfModal.classList.contains("hidden")
+      ) {
+        pdfModal.classList.add("hidden");
+        pdfViewer.src = "";
+        document.body.style.overflow = "auto";
+      }
     });
   }
 </script>
