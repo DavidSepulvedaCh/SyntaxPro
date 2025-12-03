@@ -154,8 +154,30 @@ import productos from "../data/productos.json";
     <div class="tab-content" id="kits-tab">
       <section class="kits-section">
         <div class="section-header">
-          <h2>Kits de Material Didáctico</h2>
-          <p>Material complementario para tus sesiones</p>
+          <div class="section-header-text">
+            <h2>Kits de Material Didáctico</h2>
+            <p>Material complementario para tus sesiones</p>
+          </div>
+          <button class="btn-instructions" id="btnInstructions">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <line x1="10" y1="9" x2="8" y2="9"/>
+            </svg>
+            Instrucciones
+          </button>
         </div>
         <div class="kits-grid">
           {
@@ -456,6 +478,14 @@ import productos from "../data/productos.json";
 
   .section-header {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .section-header-text {
+    flex: 1;
   }
 
   .section-header h2 {
@@ -469,6 +499,33 @@ import productos from "../data/productos.json";
     font-size: 1rem;
     color: var(--color-text-light);
     margin: 0;
+  }
+
+  .btn-instructions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    white-space: nowrap;
+  }
+
+  .btn-instructions:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+  }
+
+  .btn-instructions svg {
+    width: 20px;
+    height: 20px;
   }
 
   .courses-grid {
@@ -806,8 +863,19 @@ import productos from "../data/productos.json";
       gap: 1.5rem;
     }
 
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
     .section-header h2 {
       font-size: 1.5rem;
+    }
+
+    .btn-instructions {
+      width: 100%;
+      justify-content: center;
     }
 
     .pdf-modal {
@@ -971,6 +1039,20 @@ import productos from "../data/productos.json";
         pdfModal.classList.add("hidden");
         pdfViewer.src = "";
         document.body.style.overflow = "auto";
+      }
+    });
+
+    // Manejar botón de Instrucciones
+    const btnInstructions = document.getElementById("btnInstructions");
+    btnInstructions?.addEventListener("click", () => {
+      const baseUrl = getBaseUrl();
+      const guiaUrl = `${baseUrl}kits/GuiaKits.pdf`;
+      
+      if (pdfModal && pdfViewer && pdfModalTitle) {
+        pdfModalTitle.textContent = "Guía de Kits - Instrucciones";
+        pdfViewer.src = guiaUrl;
+        pdfModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
       }
     });
   }
